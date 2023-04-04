@@ -1,0 +1,115 @@
+body{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #3b4664;
+}
+
+.main-container{
+    
+/*     border: 5px solid black; */
+    height: 700px;
+    width: 500px;
+    margin: 15vh;
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+
+
+.button-container{
+    background-color: #192035;
+/*     border: 5px solid black; */
+    margin: 15px;
+    margin-top: 5px;
+    border-radius: 15px;
+    flex: 1 0 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 10px #b0b2bb; 
+}
+
+.row{
+    /*   border: 5px solid black; */
+    margin: 3px;
+    flex: 1 0 0;
+    display: flex;
+    flex-direction: row;
+}
+
+button{
+    background-color:#eae3db;
+    padding: 8px 8px;
+    font-size: 35px;
+    font-weight: bold;
+    margin: 15px;
+    text-align: center;
+    flex: 1 0 0;
+    box-shadow: 0 5px grey;
+    border:none;
+    border-radius: 15px;
+}
+
+button:active {
+    background-color:#eae3db;
+    box-shadow: 0 5px grey;
+    transform: translateY(4px);
+  }
+
+  .blue-button{
+      font-size: 25px;
+    color: white;
+    background-color: #445b9c;
+    box-shadow: 0 5px #2f447c;
+}
+.blue-button:active{
+    background-color: #445b9c;
+    box-shadow: 0 5px #2f447c;
+}
+
+.red-button{
+    font-size: 25;
+    color: white;
+    background-color: #d13f30;
+    box-shadow: 0 5px #a02315;
+}
+
+.red-button:active{
+    background-color: #d13f30;
+    box-shadow: 0 5px #a02315;
+}
+
+.display{
+    overflow:hidden;
+    padding:10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #161d32;
+    margin: 15px;
+    border-radius: 15px;
+    min-height: 150px;
+    box-shadow: 10px 10px #b0b2bb; 
+    
+    
+}
+
+
+
+.input-display{
+    align-self: flex-end;
+    margin: 5px;
+    font-size: 60px;
+    color:white;
+}
+
+.operation-display{
+    align-self: flex-end;
+ /*    border: 5px solid black; */
+    margin: 5px;
+    font-size: 30px;
+    color:white;
+}
