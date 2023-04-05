@@ -1,5 +1,4 @@
-let dotCount = 0;
-let num1, operator, num2, result;
+let num1, operator, num2;
 const inputDisplay = document.querySelector(".input-display");
 const operationDisplay = document.querySelector(".operation-display");
 const numButtons = document.querySelectorAll(".num");
@@ -7,13 +6,21 @@ const operatorButtons = document.querySelectorAll(".operator");
 const calculate = document.querySelector(".calculate");
 const reset = document.querySelector(".RESET");
 const del = document.querySelector(".DEL");
-let isFirstInput = true;
 let inputCount = 0;
 
-function toggle() {
-  isFirstInput = !isFirstInput;
-  return isFirstInput;
-}
+del.addEventListener("click", delLastInput);
+
+reset.addEventListener("click", resetEverything);
+
+numButtons.forEach((numButton) => {
+  numButton.addEventListener("click", populateInputDisplay);
+});
+
+operatorButtons.forEach((operatorButton) => {
+  operatorButton.addEventListener("click", populateOperationDisplay);
+});
+
+calculate.addEventListener("click", calculateResult);
 
 function add(a, b) {
   return a + b;
@@ -45,6 +52,14 @@ function operate(a, b, operator) {
   }
 }
 
+function isFloat(number) {
+  if (typeof number === "number" && !isNaN(number)) {
+    if (!Number.isInteger(number)) {
+      return true;
+    }
+  } else return false;
+}
+
 function populateInputDisplay(event) {
   inputDisplay.textContent += this.value;
   if (inputCount < 1) {
@@ -73,6 +88,10 @@ function calculateResult(event) {
     inputCount = 0;
   }
 
+  if (isFloat(num1)) {
+    num1 = Number(num1.toFixed(3));
+  }
+
   inputDisplay.textContent = num1;
 }
 
@@ -92,17 +111,3 @@ function delLastInput(event) {
     num2 = Number(inputDisplay.textContent);
   }
 }
-
-del.addEventListener("click", delLastInput);
-
-reset.addEventListener("click", resetEverything);
-
-numButtons.forEach((numButton) => {
-  numButton.addEventListener("click", populateInputDisplay);
-});
-
-operatorButtons.forEach((operatorButton) => {
-  operatorButton.addEventListener("click", populateOperationDisplay);
-});
-
-calculate.addEventListener("click", calculateResult);
