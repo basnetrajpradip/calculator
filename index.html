@@ -6,13 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="style.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
+    <link href="https://fonts.cdnfonts.com/css/calculator" rel="stylesheet">
     <script type="text/javascript" src="script.js" defer></script>
 </head>
 <body>
+    <div class="logo">Calculator</div>
     <div class="main-container">
-        <div class="display">
-            <div class="operation-display"></div>
-           <div class="input-display"></div>
+        <div class="display-container">
+            <div class="display">
+                <div class="operation-display"></div>
+               <div class="input-display"></div>
+            </div>
         </div>
         <div class="button-container">
             <div class="row">
@@ -34,7 +39,7 @@
                 <button class="- operator" value="-">-</button>
             </div>
             <div class="row">
-                <button class=".">.</button>
+                <button class=". num" value="." >.</button>
                 <button class="0 num" value="0">0</button>
                 <button class="/ operator"value="/">/</button>
                 <button class="x operator" value="x">x</button>

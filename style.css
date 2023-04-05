@@ -3,8 +3,19 @@ body{
     margin: 0;
     padding: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    background-color: #3b4664;
+    align-items: center;
+    background-color: #3b4664; 
+
+}
+
+.logo{
+    margin-top: 60px;
+    font-size: 90px;
+ /*    font-family: 'Aclonica'; */
+    color:rgb(240, 230, 230);
+    font-family: 'Calculator', sans-serif;
 }
 
 .main-container{
@@ -12,11 +23,9 @@ body{
 /*     border: 5px solid black; */
     height: 700px;
     width: 500px;
-    margin: 15vh;
+    margin-bottom: 5vh;
     display: flex;
     flex-direction: column;
-    
-    
 }
 
 
@@ -43,7 +52,7 @@ body{
 button{
     background-color:#eae3db;
     padding: 8px 8px;
-    font-size: 35px;
+    font-size: 40px;
     font-weight: bold;
     margin: 15px;
     text-align: center;
@@ -51,27 +60,28 @@ button{
     box-shadow: 0 5px grey;
     border:none;
     border-radius: 15px;
+    font-family: 'Calculator', sans-serif;
 }
 
 button:active {
     background-color:#eae3db;
-    box-shadow: 0 5px grey;
+    box-shadow: 0 0px grey;
     transform: translateY(4px);
   }
 
   .blue-button{
-      font-size: 25px;
+      font-size: 30px;
     color: white;
     background-color: #445b9c;
     box-shadow: 0 5px #2f447c;
 }
 .blue-button:active{
     background-color: #445b9c;
-    box-shadow: 0 5px #2f447c;
+    box-shadow: 0 0px #2f447c;
 }
 
 .red-button{
-    font-size: 25;
+    font-size: 40px;
     color: white;
     background-color: #d13f30;
     box-shadow: 0 5px #a02315;
@@ -79,10 +89,10 @@ button:active {
 
 .red-button:active{
     background-color: #d13f30;
-    box-shadow: 0 5px #a02315;
+    box-shadow: 0 0px #a02315;
 }
 
-.display{
+.display-container{
     overflow:hidden;
     padding:10px;
     display: flex;
@@ -92,18 +102,30 @@ button:active {
     margin: 15px;
     border-radius: 15px;
     min-height: 150px;
-    box-shadow: 10px 10px #b0b2bb; 
-    
+    box-shadow: 10px 10px #b0b2bb;
+}
+
+.display{
+    overflow:hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #161d32;
+    border-radius: 15px;
+    min-height: 150px;
+    background-color: #859249;
     
 }
 
 
 
 .input-display{
+    
     align-self: flex-end;
     margin: 5px;
-    font-size: 60px;
-    color:white;
+    font-size: 70px;
+    color:black;
+    font-family: 'Calculator', sans-serif;
 }
 
 .operation-display{
@@ -111,5 +133,6 @@ button:active {
  /*    border: 5px solid black; */
     margin: 5px;
     font-size: 30px;
-    color:white;
+    color:black;
+    font-family: 'Calculator', sans-serif;
 }

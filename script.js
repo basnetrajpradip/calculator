@@ -1,26 +1,30 @@
+let dotCount = 0;
 let num1, operator, num2, result;
 const inputDisplay = document.querySelector(".input-display");
 const operationDisplay = document.querySelector(".operation-display");
 const numButtons = document.querySelectorAll(".num");
 const operatorButtons = document.querySelectorAll(".operator");
 const calculate = document.querySelector(".calculate");
-let boolToggle = true;
+const reset = document.querySelector(".RESET");
+const del = document.querySelector(".DEL");
+let isFirstInput = true;
+let inputCount = 0;
 
 function toggle() {
-  boolToggle = !boolToggle;
-  return boolToggle;
+  isFirstInput = !isFirstInput;
+  return isFirstInput;
 }
 
-function add(a, b = 0) {
+function add(a, b) {
   return a + b;
 }
-function substract(a, b = 0) {
+function substract(a, b) {
   return a - b;
 }
-function multiply(a, b = 1) {
+function multiply(a, b) {
   return a * b;
 }
-function divide(a, b = 1) {
+function divide(a, b) {
   return a / b;
 }
 
@@ -43,27 +47,62 @@ function operate(a, b, operator) {
 
 function populateInputDisplay(event) {
   inputDisplay.textContent += this.value;
+  if (inputCount < 1) {
+    num1 = Number(inputDisplay.textContent);
+  } else {
+    num2 = Number(inputDisplay.textContent);
+  }
 }
 
 function populateOperationDisplay(event) {
-  num1 = Number(inputDisplay.textContent);
+  inputCount++;
+  if (inputCount > 1) {
+    num1 = operate(num1, num2, operator);
+    num2 = null;
+  }
+  operator = this.value;
   operationDisplay.textContent = `${num1} ${this.value}`;
   inputDisplay.textContent = "";
-  operator = this.value;
 }
 
 function calculateResult(event) {
-  num2 = Number(inputDisplay.textContent);
-  inputDisplay.textContent = `${operate(num1, num2, operator)}`;
+  if (num2 !== null) {
+    operationDisplay.textContent += ` ${num2} =`;
+    num1 = operate(num1, num2, operator);
+    num2 = null;
+    inputCount = 0;
+  }
+
+  inputDisplay.textContent = num1;
+}
+
+function resetEverything(event) {
+  num1 = num2 = null;
+  isFirstInput = true;
+  inputCount = 0;
+  inputDisplay.textContent = "";
   operationDisplay.textContent = "";
 }
 
-numButtons.forEach((button) => {
-  button.addEventListener("click", populateInputDisplay);
+function delLastInput(event) {
+  inputDisplay.textContent = inputDisplay.textContent.slice(0, inputDisplay.textContent.length - 1);
+  if (inputCount < 1) {
+    num1 = Number(inputDisplay.textContent);
+  } else {
+    num2 = Number(inputDisplay.textContent);
+  }
+}
+
+del.addEventListener("click", delLastInput);
+
+reset.addEventListener("click", resetEverything);
+
+numButtons.forEach((numButton) => {
+  numButton.addEventListener("click", populateInputDisplay);
 });
 
-operatorButtons.forEach((button) => {
-  button.addEventListener("click", populateOperationDisplay);
+operatorButtons.forEach((operatorButton) => {
+  operatorButton.addEventListener("click", populateOperationDisplay);
 });
 
 calculate.addEventListener("click", calculateResult);
