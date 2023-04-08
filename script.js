@@ -8,10 +8,6 @@ const reset = document.querySelector(".RESET");
 const del = document.querySelector(".DEL");
 let inputCount = 0;
 
-del.addEventListener("click", delLastInput);
-
-reset.addEventListener("click", resetEverything);
-
 numButtons.forEach((numButton) => {
   numButton.addEventListener("click", populateInputDisplay);
 });
@@ -21,6 +17,10 @@ operatorButtons.forEach((operatorButton) => {
 });
 
 calculate.addEventListener("click", calculateResult);
+
+del.addEventListener("click", delLastInput);
+
+reset.addEventListener("click", resetEverything);
 
 function add(a, b) {
   return a + b;
@@ -73,6 +73,10 @@ function populateOperationDisplay(event) {
   inputCount++;
   if (inputCount > 1) {
     num1 = operate(num1, num2, operator);
+    if (isFloat(num1)) {
+      num1 = Number(num1.toFixed(3));
+    }
+
     num2 = null;
   }
   operator = this.value;
